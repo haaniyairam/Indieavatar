@@ -24,6 +24,13 @@ const Home = () => {
           </div>
           <div className="prompt-container">
         <input className="prompt-box" value={input} onChange={onChange}/>
+        <div className="prompt-buttons">
+          <a className="genarate-button">
+          <div className="generate">
+        <p>Generate</p>
+      </div>
+          </a>
+        </div>
         </div>
         </div>
       </div>
