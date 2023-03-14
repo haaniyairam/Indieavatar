@@ -5,6 +5,9 @@ import buildspaceLogo from '../assets/buildspace-logo.png';
 
 const Home = () => {
   const [input, setInput] = useState('');
+  const onChange = (event) => {
+    setInput(event.target.value);
+  };
   return (
     <div className="root">
       <Head>
@@ -20,7 +23,7 @@ const Home = () => {
             </h2>
           </div>
           <div className="prompt-container">
-        <input className="prompt-box" value={input}/>
+        <input className="prompt-box" value={input} onChange={onChange}/>
         </div>
         </div>
       </div>
