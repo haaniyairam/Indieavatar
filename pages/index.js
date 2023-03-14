@@ -9,7 +9,29 @@ const Home = () => {
     setInput(event.target.value);
   };
   const generateAction = async () => {
-    console.log('Generating...');	
+    console.log('Generating...');
+    const response = await fetch('/api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'image/jpeg',
+      },
+      body: JSON.stringify({ input }),
+    });
+    
+    const data = await response.json();
+  
+    if (response.status === 503) {
+      console.log('Model still loading...');
+      return;
+    }
+  
+    if (!response.ok) {
+      console.log(`Error: ${data.error}`);
+      return;
+    }
+  
+    // Set image data into state property
+    setImg(data.image);
   }
   return (
     <div className="root">
