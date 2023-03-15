@@ -15,13 +15,6 @@ const Home = () => {
   };
   const generateAction = async () => {
     console.log('Generating...');
-    const response = await fetch('/api/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'image/jpeg',
-      },
-      body: JSON.stringify({ input }),
-    });
     
     const data = await response.json();
   
