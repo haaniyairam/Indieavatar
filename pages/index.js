@@ -13,11 +13,13 @@ const Home = () => {
   // Number of retries left
   const [retryCount, setRetryCount] = useState(maxRetries);
   const [isGenerating, setIsGenerating] = useState(false);
-
+  const [finalPrompt, setFinalPrompt] = useState(''); 
 
   const onChange = (event) => {
     setInput(event.target.value);
   };
+
+
   const generateAction = async () => {
     console.log('Generating...');
 
@@ -38,17 +40,18 @@ const Home = () => {
       setRetry(0);
     }
 
+    const finalInput = input.replace(/Haaniya-Iram17/gi, "Hira");
 
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'image/jpeg',
       },
-      body: JSON.stringify({ input }),
+      body: JSON.stringify({ finalInput }),
     });
     
     const data = await response.json();
-  
+
     if (response.status === 503) {
       setRetry(data.estimated_time);
       return;
@@ -60,9 +63,11 @@ const Home = () => {
       return;
     }
   
-    // Set image data into state property
+    setFinalPrompt(input);
+    setInput(" ");
     setImg(data.image);
-  }
+    setIsGenerating(false);
+  };
 
   const sleep = (ms) => {
     return new Promise((resolve) => {
@@ -112,14 +117,26 @@ const Home = () => {
           <div className="prompt-container">
         <input className="prompt-box" value={input} onChange={onChange}/>
         <div className="prompt-buttons">
-          <a className="genarate-button" onClick={generateAction}>
+          <a className={
+        isGenerating ? 'generate-button loading' : 'generate-button'
+      } onClick={generateAction}>
           <div className="generate">
+          {isGenerating ? (
+          <span className="loader"></span>
+        ) : (
         <p>Generate</p>
+        )}
       </div>
           </a>
         </div>
         </div>
         </div>
+        {img && (
+      <div className="output-content">
+        <Image src={img} width={512} height={512} alt={finalPrompt} />
+        <p>{finalPrompt}</p>
+      </div>
+    )}
       </div>
       <div className="badge-container grow">
         <a
