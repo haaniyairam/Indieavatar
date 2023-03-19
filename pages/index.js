@@ -103,12 +103,12 @@ const Home = () => {
   return (
     <div className="root">
       <Head>
-        <title>GenieAvatar: Grant Your Image Wishes| buildspace</title>
+        <title>IndieAvatar: Grant Your Image Wishes| buildspace</title>
       </Head>
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>GenieAvatar: Grant Your Image Wishes</h1>
+            <h1>IndieAvatar: Grant Your Image Wishes</h1>
           </div>
           <div className="header-subtitle">
             <h2>Hi, I'm Hira, and you'll never forget it.
