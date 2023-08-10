@@ -1,3 +1,8 @@
+
+# Indieavatar
+Our project introduces an AI avatar generator that draws inspiration from the intricate and captivating art forms of India. At its core is a meticulously trained model that has been immersed in the rich tapestry of Indian artistry. What sets our generator apart is its utilization of stable diffusion techniques during training, ensuring both accuracy and enduring artistic knowledge.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 
